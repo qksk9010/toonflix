@@ -35,23 +35,27 @@ class Webtoon extends StatelessWidget {
               width: 250,
               clipBehavior: Clip.hardEdge,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  boxShadow: [
-                    BoxShadow(
-                        blurRadius: 15,
-                        offset: const Offset(10, 10),
-                        color: Colors.black.withOpacity(0.5)),
-                  ]),
+                borderRadius: BorderRadius.circular(15),
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: 15,
+                    offset: const Offset(10, 10),
+                    color: Colors.black.withOpacity(0.3),
+                  )
+                ],
+              ),
               child: Image.network(thumb),
             ),
           ),
           const SizedBox(
             height: 10,
           ),
-          Text(title,
-              style: const TextStyle(
-                fontSize: 22,
-              )),
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 22,
+            ),
+          ),
         ],
       ),
     );

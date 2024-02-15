@@ -1,8 +1,9 @@
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import 'package:toonflix/models/webtoon_detail_model.dart';
+import 'package:toonflix/models/webtoon_episode_model.dart';
 import 'package:toonflix/models/webtoon_model.dart';
-import 'package:toonflix/models/wetoon_episode_model.dart';
 
 class ApiService {
   static const String baseUrl =
@@ -34,7 +35,7 @@ class ApiService {
     throw Error();
   }
 
-  static Future<List<WebtoonEpisodeModel>> getLatesEpisodesById(
+  static Future<List<WebtoonEpisodeModel>> getLatestEpisodesById(
       String id) async {
     List<WebtoonEpisodeModel> episodesInstances = [];
     final url = Uri.parse("$baseUrl/$id/episodes");
@@ -42,8 +43,7 @@ class ApiService {
     if (response.statusCode == 200) {
       final episodes = jsonDecode(response.body);
       for (var episode in episodes) {
-        final instance = WebtoonEpisodeModel.fromJson(episode);
-        episodesInstances.add(instance);
+        episodesInstances.add(WebtoonEpisodeModel.fromJson(episode));
       }
       return episodesInstances;
     }
